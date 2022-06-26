@@ -40,8 +40,26 @@
   }
 </style>
 
-<button></button>
+<button>Button</button>
 <script>
+const divs = document.querySelectorAll('div');
+const button = document.querySelector('button');
+
+function logText(e) {
+  console.log(this.classList.value);
+  e.stopPropagation(); // stop bubbling up or down
+}
+
+divs.forEach(div => div.addEventListener('click', logText, {
+  capture: false, // false is default, bubbles upward // 3rd options argument
+  once: true // lets you only click ONCE
+}));
+
+button.addEventListener('click', () => {
+  console.log('CLICK WAS REGISTERED!')
+}, {
+  once: true // options argument(AWARE OF LOCATION!!!)
+});
 
 </script>
 </body>
