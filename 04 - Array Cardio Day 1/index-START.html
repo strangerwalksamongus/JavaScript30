@@ -116,18 +116,29 @@ console.table(oldest);
     // 7. sort Exercise
     // Sort the people alphabetically by last name
 const sortByLast = people.sort(function(previous, next) {
-  let [aLast, aFirst] = previous.split(',  ');
+  let [aLast, aFirst] = previous.split(', ');
   let [bLast, bFirst] = next.split(', ');
-  return aLast > bLast ? -1 : 1;
+  return aLast > bLast ? -1 : 1; // string comparison uses alphabetical order or letters, NOT the length of the string
 });
 
 
 
 console.log(sortByLast);
 
+
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+
+let transport = data.reduce(function(object, entry) {
+  if (!object[entry]) { // if there is no object entry, create it, set it to 0 and populate the {} below
+    object[entry] = 0; // replaces the empty object below: car = 0, truck = 0 etc.
+    }
+    object[entry]++;
+    return object;
+}, {}); //  set the object to empty {} to start with
+
+console.log(transport);
 
   </script>
 </body>
